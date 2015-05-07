@@ -122,7 +122,7 @@ class COL_ManageDataSubmission{
 		
 		$wpdb->insert( $table_name, array( 'place' => filter_var($_POST['new_place'], FILTER_SANITIZE_STRING), 'rent' => filter_var($_POST['new_rent'], FILTER_SANITIZE_NUMBER_INT)));
 	
-		$this->update_rent_js();
+		return $this->update_rent_js();
 	
 	}
 	
@@ -145,7 +145,15 @@ class COL_ManageDataSubmission{
 			
 		}
 		
-		file_put_contents(plugin_dir_path(__FILE__) . "js/col_calculate_places.js", $js);
+		if(file_exists(dirname(__FILE__) . "/js/col_calculate_places.js")){
+			if(file_put_contents(dirname(__FILE__) . "/js/col_calculate_places.js", $js)){
+				return "Updated successfully";
+			}else{
+				return "Error - file not updated";
+			}
+		}else{
+			return "Error - file not found";
+		}
 	
 	}
 	
@@ -211,7 +219,8 @@ class COL_ManageDataSubmission{
 				
 			}else{			
 			
-				$this->add_place();
+				$response = $this->add_place();
+				echo "<p>" . $response . "</p>";
 			
 			}
 		

@@ -3,12 +3,11 @@
 /*
 	Plugin Name: Cost of Living Calculator
 	Description: Creates the Cost of Living Calculator on WordPress
-	Version: 0.01
+	Version: 0.2
 	Author: pgogy
-	Author URI: http://www.pgogy.com
+	Author URI: http://www.pgogywebstuff.com
 */
 
-require_once('class-COL.php');
 require_once('class-COL_Manage.php');
 require_once('class-COL_display_calculator.php');
 require_once('class-COL_ManageDataSubmission.php');
